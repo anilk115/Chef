@@ -1,0 +1,6 @@
+# Set the version number
+sudo -S knife exec -E "nodes.find(:name => '`hostname`') { |node|   node.normal_attrs[:'applications'][:'@option.Application_Name@'][:'version']='@option.Application_Version@'; node.save; }"  -c /etc/chef/client.rb
+
+sudo -S knife exec -E "nodes.find(:name => '`hostname`') { |node|   node.normal_attrs[:'middleware'][:'deployable']='@option.Deploy_App@'; node.save; }"  -c /etc/chef/client.rb
+# run chef-client
+sudo -S chef-client
